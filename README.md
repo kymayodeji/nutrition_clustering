@@ -73,7 +73,7 @@ We used multiple clustering methods (KMeans, Agglomerate, and Gaussian Mixture) 
 
 ### Findings and Insights Summary
 
-All of the clustering methods used identified six clusters as the optimal number to produce the highest silhouette score.  Although the K-Means method was faster to fit, the Hierarchical model is known to work well for large datasets such as the one we used (8000+ rows) .  
+ Although the K-Means method was faster to fit, the Hierarchical model is known to work well for large datasets such as the one we used (8000+ rows). Unfortunately, the result of hypertuning the Hierarchical Clustering resulted in an "optimal" result being the smallest number of clusters tested when using non-Ward linkage options. This also led to an extremely unbalanced cluster grouping with the first cluster containing more than 99% of the foods for any model using non-ward linkage. When adjusting the Hierarchical clustering to the ward linkage, then the optimal number of clusters obtain was the same as the result for K-Means. The last method tested, resulted in an smaller number of clusters compared to the other methods. Although this smaller number of clusters were more balanced than the other method's clusters, this method had the lowest Silhouette score.
 
 
 ### Next Steps
