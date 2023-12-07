@@ -1,4 +1,5 @@
-# nutrition_clustering
+# Nutrition Clustering
+(Reference: https://www.ers.usda.gov/webdocs/publications/42215/5831_aib750b_1_.pdf)
 
 ### Objective
 Since 1917, the US Department of Agriculture (USDA) has publicized different groupings (4, 5, 6 and 7) of food.  Since 1993, six food groups ( 1. Bread, cereal, rice, and pasta, 2. Vegetables,  3. Fruits, 4. Milk, yogurt, and cheeses, 5. Meat, poultry, fish, dry beans, eggs, and nuts group and recommended sparing use of 6. Fats, oils, and sweets) have been publicized based on "nutritional objectives and to moderate intake of those components related to risk of chronic diseases" (Dietary
@@ -64,7 +65,7 @@ The United States Department of Agriculture Agricultural Research Service’s(ht
 51. GmWt_Desc2 - gram weight 2 description
 
 ### Exploratory Data Analysis, Data Cleaning and Data Pre-Processing
-I removed two columns (49. GmWt_Desc1 and 51. GmWt_Desc2) as they included text descriptions that would not be useful in identifying nutritional values of the foods. The individual identifier 1. NDB_No was also removed for the same reason, but the 2. Short_Desc was kept for identification purposes, but not used to determine the clustering. Over 44 of the remaining 47 columns had null/empty values, but is consistent since not all vitamins or nutrients are found in a food product. I elected to replace the emtpy values with 0 to accurately represent the quantity. Using a correlation matrix, we found very few (less than 5 pairings) of the 47 features were strongly correlated to each other. Most of the columns were strongly skewed, so a log transform was applied and then a feature scaling (normalization) was applied to prepare the data for the clustering models.
+I removed two columns (49. GmWt_Desc1 and 51. GmWt_Desc2) as they included text descriptions that would not be useful in identifying nutritional values of the foods. The individual identifier colum (1. NDB_No) was also removed for the same reason, but the 2. Short_Desc was kept for identification purposes, but not used to determine the clustering. Over 44 of the remaining 47 columns had null/empty values, but is consistent since not all vitamins or nutrients are found in a food product. I elected to replace the emtpy values with 0 to accurately represent the quantity. Using a correlation matrix, we found very few (less than 5 pairings) of the 47 features were strongly correlated to each other. Most of the columns were strongly skewed, so a log transform was applied and then a feature scaling (normalization) was applied to prepare the data for the clustering models.
 
 
 ### Methods
@@ -72,11 +73,11 @@ We used multiple clustering methods (KMeans, Agglomerate, and Gaussian Mixture) 
 
 ### Findings and Insights Summary
 
-All of the clustering methods used identified six clusters as the optimal number to produce the highest silhouette score.  
+All of the clustering methods used identified six clusters as the optimal number to produce the highest silhouette score.  Although the K-Means method was faster to fit, the Hierarchical model is known to work well for large datasets such as the one we used (8000+ rows) .  
 
 
 ### Next Steps
-Using Dimensionality Reduction would be the next logical step in this analysis in order to reduce the amount of time needed to run the clustering methods.
+Although the K-Means method was faster, the density of the resulting cluster groups is highly dependent on the initial centroids. To determine if the resulting model was ideal, I would need to test with different random_states to compare clustering results. Reducing the clustering performance via dimensionality Reduction methods like PCA or t-SNE would be the next logical step to improving performance. 
 
 
 
